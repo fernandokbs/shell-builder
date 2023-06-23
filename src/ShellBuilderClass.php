@@ -94,7 +94,7 @@ class ShellBuilderClass
     {
         $builder = static::create($command);
 
-        if($callback) {
+        if ($callback) {
             $callback($builder);
         }
 
@@ -112,19 +112,19 @@ class ShellBuilderClass
         $arguments = implode(' ', $this->arguments);
         $environmentVariables = implode(' ', $this->environmentVariables);
 
-        if($environmentVariables) {
+        if ($environmentVariables) {
             $command = "{$environmentVariables} {$command}";
         }
 
-        if($flags) {
+        if ($flags) {
             $command .= " {$flags}";
         }
 
-        if($options) {
+        if ($options) {
             $command .= " {$options}";
         }
 
-        if($arguments) {
+        if ($arguments) {
             $command .= " {$arguments}";
         }
 
