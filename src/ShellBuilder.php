@@ -3,8 +3,8 @@
 namespace Fernandokbs\ShellBuilder;
 
 use Closure;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class ShellBuilder
 {
