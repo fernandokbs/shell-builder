@@ -14,7 +14,7 @@ ShellBuilder::create('ruby')
 # output = ruby -v
 ```
 
-#### Flags
+### Flags
 
 ```php
 ShellBuilder::create('ls')
