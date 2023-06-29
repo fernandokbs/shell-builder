@@ -3,6 +3,8 @@
 namespace Fernandokbs\ShellBuilder;
 
 use Closure;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class ShellBuilder
 {
@@ -129,5 +131,18 @@ class ShellBuilder
         }
 
         return $command;
+    }
+
+    public function execute(): Process
+    {
+        $process = Process::fromShellCommandline($this->getExecuteCommand());
+
+        $process->run();
+
+        if (! $process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+
+        return $process;
     }
 }

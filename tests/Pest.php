@@ -92,3 +92,11 @@ it('can add sub command with arguments', function () {
 
     expect($command)->toBe('git --no-pager log --oneline');
 });
+
+it('can execute command', function () {
+    $command = ShellBuilder::create('php')
+        ->withFlag('-v')
+        ->execute();
+
+    expect($command->getExitCode())->toBe(0);
+});
