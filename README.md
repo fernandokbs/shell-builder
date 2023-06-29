@@ -35,7 +35,7 @@ ShellBuilder::create('ruby')
 # output = ruby -v -e puts "Hello"
 ```
 
-or `#withOptions`, either as a array:
+or `withOptions`, either as an array:
 
 ```php
 ShellBuilder::create('gpg')
@@ -67,6 +67,32 @@ ShellBuilder::create('diff')
 
 # output = diff ./file1.txt ./file2.txt
 
+```
+
+### Environment Variables
+
+Command lines can be prefixed with environment variables using `withEnvironmentVariable`
+
+```php
+
+ShellBuilder::create('php')
+    ->withEnvironmentVariable('APP_ENV', 'testing')
+    ->getExecuteCommand();
+
+# => APP_ENV=testing php'
+```
+
+or `withEnvironmentVariables`, either as an array:
+
+```php
+hellBuilder::create('php')
+    ->withEnvironmentVariables([
+        'APP_ENV' => 'testing',
+        'APP_DEBUG' => 'true',
+    ])
+    ->getExecuteCommand();
+
+# => APP_ENV=testing APP_DEBUG=true php
 ```
 
 ### Subcommands
