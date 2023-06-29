@@ -5,9 +5,9 @@ Command line builder utilities.
 ## Usage
 
 ```php
-use Fernandokbs\ShellBuilder\ShellBuilderClass;
+use Fernandokbs\ShellBuilder\ShellBuilder;
 
-ShellBuilderClass::create('ruby')
+ShellBuilder::create('ruby')
     ->withFlag('-v')
     ->getExecuteCommand();
 
@@ -17,7 +17,7 @@ ShellBuilderClass::create('ruby')
 #### Flags
 
 ```php
-ShellBuilderClass::create('ls')
+ShellBuilder::create('ls')
     ->withFlags(['-l', '-a'])
     ->getExecuteCommand();
 
@@ -27,7 +27,7 @@ ShellBuilderClass::create('ls')
 ### Options
 
 ```php
-ShellBuilderClass::create('ruby')
+ShellBuilder::create('ruby')
         ->withFlag('-v')
         ->withOption('-e', 'puts "Hello World"')
         ->getExecuteCommand();
@@ -38,7 +38,7 @@ ShellBuilderClass::create('ruby')
 or `#withOptions`, either as a array:
 
 ```php
-ShellBuilderClass::create('gpg')
+ShellBuilder::create('gpg')
     ->withOptions([
         '--recipient' => 'fernando93d@gmail.com',
         '--sign' => './doc.txt',
@@ -51,7 +51,7 @@ ShellBuilderClass::create('gpg')
 ### Arguments
 
 ```php
-ShellBuilderClass::create('diff')
+ShellBuilder::create('diff')
     ->withArgument('./file1.txt')
     ->getExecuteCommand();
 
@@ -61,7 +61,7 @@ ShellBuilderClass::create('diff')
 or `#withArguments`, either as a array:
 
 ```php
-ShellBuilderClass::create('diff')
+ShellBuilder::create('diff')
     ->withArguments(['./file1.txt', './file2.txt'])
     ->getExecuteCommand();
 
@@ -75,7 +75,7 @@ Subcommands can be added using `withSubcommand`
 
 ```php
 
-ShellBuilderClass::create('git')
+ShellBuilder::create('git')
     ->withFlag('--no-pager')
     ->withSubCommand('log')
     ->getExecuteCommand();
@@ -87,7 +87,7 @@ Subcommands also support options via `withFlag`, `withFlags`, `withOption`, `wit
 
 ```php
 
-ShellBuilderClass::create('git')
+ShellBuilder::create('git')
     ->withFlag('--no-pager')
     ->withSubCommand('log', function ($builder) {
         $builder->withFlag('--oneline');

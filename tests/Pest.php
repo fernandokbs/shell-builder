@@ -1,9 +1,9 @@
 <?php
 
-use Fernandokbs\ShellBuilder\ShellBuilderClass;
+use Fernandokbs\ShellBuilder\ShellBuilder;
 
 it('can add flag', function () {
-    $command = ShellBuilderClass::create('ruby')
+    $command = ShellBuilder::create('ruby')
         ->withFlag('-v')
         ->getExecuteCommand();
 
@@ -11,7 +11,7 @@ it('can add flag', function () {
 });
 
 it('can add multiple flags', function () {
-    $command = ShellBuilderClass::create('ls')
+    $command = ShellBuilder::create('ls')
         ->withFlags(['-l', '-a'])
         ->getExecuteCommand();
 
@@ -19,7 +19,7 @@ it('can add multiple flags', function () {
 });
 
 it('can add option', function () {
-    $command = ShellBuilderClass::create('ruby')
+    $command = ShellBuilder::create('ruby')
         ->withFlag('-v')
         ->withOption('-e', 'puts "Hello World"')
         ->getExecuteCommand();
@@ -28,7 +28,7 @@ it('can add option', function () {
 });
 
 it('can add multiple options', function () {
-    $command = ShellBuilderClass::create('gpg')
+    $command = ShellBuilder::create('gpg')
         ->withOptions([
             '--recipient' => 'fernando93d@gmail.com',
             '--sign' => './doc.txt',
@@ -39,7 +39,7 @@ it('can add multiple options', function () {
 });
 
 it('can add argument', function () {
-    $command = ShellBuilderClass::create('diff')
+    $command = ShellBuilder::create('diff')
         ->withArgument('./file1.txt')
         ->getExecuteCommand();
 
@@ -47,7 +47,7 @@ it('can add argument', function () {
 });
 
 it('can add multiple arguments', function () {
-    $command = ShellBuilderClass::create('diff')
+    $command = ShellBuilder::create('diff')
         ->withArguments(['./file1.txt', './file2.txt'])
         ->getExecuteCommand();
 
@@ -55,7 +55,7 @@ it('can add multiple arguments', function () {
 });
 
 it('can add environment variable', function () {
-    $command = ShellBuilderClass::create('php')
+    $command = ShellBuilder::create('php')
         ->withEnvironmentVariable('APP_ENV', 'testing')
         ->getExecuteCommand();
 
@@ -63,7 +63,7 @@ it('can add environment variable', function () {
 });
 
 it('can add multiple environment variables', function () {
-    $command = ShellBuilderClass::create('php')
+    $command = ShellBuilder::create('php')
         ->withEnvironmentVariables([
             'APP_ENV' => 'testing',
             'APP_DEBUG' => 'true',
@@ -74,7 +74,7 @@ it('can add multiple environment variables', function () {
 });
 
 it('can add sub command', function () {
-    $command = ShellBuilderClass::create('git')
+    $command = ShellBuilder::create('git')
         ->withFlag('--no-pager')
         ->withSubCommand('log')
         ->getExecuteCommand();
@@ -83,7 +83,7 @@ it('can add sub command', function () {
 });
 
 it('can add sub command with arguments', function () {
-    $command = ShellBuilderClass::create('git')
+    $command = ShellBuilder::create('git')
         ->withFlag('--no-pager')
         ->withSubCommand('log', function ($builder) {
             $builder->withFlag('--oneline');

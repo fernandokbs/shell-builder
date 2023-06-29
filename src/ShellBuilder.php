@@ -4,7 +4,7 @@ namespace Fernandokbs\ShellBuilder;
 
 use Closure;
 
-class ShellBuilderClass
+class ShellBuilder
 {
     protected string $binary;
 
